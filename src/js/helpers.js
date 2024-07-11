@@ -1,11 +1,9 @@
 import { TIMEOUT_SEC } from './config';
 
 export const numberToFraction = function (amount) {
-  // This is a whole number and doesn't need modification.
   if (parseFloat(amount) === parseInt(amount)) {
     return amount;
   }
-  // Next 12 lines are cribbed from https://stackoverflow.com/a/23575406.
   const gcd = function (a, b) {
     if (b < 0.0000001) {
       return a;
@@ -19,8 +17,6 @@ export const numberToFraction = function (amount) {
   numerator /= divisor;
   denominator /= divisor;
   let base = 0;
-  // In a scenario like 3/2, convert to 1 1/2
-  // by pulling out the base number and reducing the numerator.
   if (numerator > denominator) {
     base = Math.floor(numerator / denominator);
     numerator -= base * denominator;
